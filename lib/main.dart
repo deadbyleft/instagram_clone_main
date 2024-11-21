@@ -31,9 +31,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -82,7 +80,7 @@ class MyApp extends StatelessWidget {
           create: (context) => FirebaseAuth.instance.authStateChanges(),
           initialData: null,
         ),
-        StateNotifierProvider<myAuthProvider.AuthProvider, AuthState>(
+        StateNotifierProvider<myAuthProvider.AuthProvider,AuthState>(
           create: (context) => myAuthProvider.AuthProvider(),
         ),
         StateNotifierProvider<UserProvider, UserState>(
@@ -107,8 +105,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
+        //home: MainScreen(),
         home: SplashScreen(),
       ),
     );
   }
 }
+
